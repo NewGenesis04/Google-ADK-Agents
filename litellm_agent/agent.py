@@ -1,6 +1,6 @@
 from google.adk.agents import Agent
 from google.adk.tools import google_search
-from datetime import datetime
+from google.genai import types
 from google.adk.tools import FunctionTool
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
@@ -23,4 +23,7 @@ root_agent = Agent(
     model=model,
     description="Agent to tell jokes",
     instruction="You are an agent that tells jokes.",
+    generate_content_config=types.GenerateContentConfig(
+
+    )
 )

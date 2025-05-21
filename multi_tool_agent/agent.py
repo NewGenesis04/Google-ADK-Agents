@@ -95,7 +95,8 @@ root_agent = Agent(
     5. If an error occurs or data is missing, tell the user the information couldn't be found and prompt them for another location.
     """
 ),
-    tools=[google_search, weather_tool]
+    tools=[weather_tool]
+    #using inbuilt and custom tools together don't work
 )
 
 # Session and Runner
