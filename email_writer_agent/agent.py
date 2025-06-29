@@ -12,7 +12,7 @@ load_dotenv(dotenv_path=Path('.') / '.env')
 
 api_key = os.getenv("OPENROUTER_API_KEY")
 model = LiteLlm(
-     model="openrouter/meta-llama/llama-3.2-3b-instruct:free",
+     model="openrouter/google/gemma-3n-e4b-it:free",
      api_key=api_key
      )
 
