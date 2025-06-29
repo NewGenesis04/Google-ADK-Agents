@@ -17,10 +17,9 @@ This project contains an AI-powered agent that fetches and summarizes news headl
 ## Folder Structure
 
 reddit_news_agent/
-                 ├──__init__.py 
-                 ├── agent.py # Main agent logic and Reddit tool
-                 ├── prompts.py # System prompt/instructions for the agent
-
+├── init.py # Package initializer
+├── agent.py # Main agent logic and Reddit tool
+├── prompts.py # System prompt/instructions for the agent
 
 ---
 ## Requirements
