@@ -1,50 +1,96 @@
-# Reddit News Agent
+# 📰 Reddit News Agent
 
-This project contains an AI-powered agent that fetches and summarizes news headlines from Reddit, specifically focused on artificial intelligence (AI) topics. The agent uses the Reddit API (via `praw`) and can be integrated with LLMs for enhanced conversational capabilities.
-
----
-
-## Features
-
-- **Fetches top post titles** from any specified subreddit (default: `r/AINewsAndTrends`).
-- **Summarizes and formats** the news as a bulleted list.
-- **Handles errors gracefully** (e.g., missing credentials, invalid subreddit).
-- **Configurable LLM backend** (supports Gemini and DeepSeek via OpenRouter).
-- **Environment variable support** for API keys and credentials.
+Welcome to **Reddit News Agent** – your always-curious, never-sleepy AI that fetches the latest and greatest from Reddit, so you don’t have to scroll endlessly! Whether you want trending headlines, niche subreddit gems, or just a daily dose of internet culture, this agent’s got you covered.
 
 ---
 
-## Folder Structure
+## 🚀 Features
 
+- **Fetch Top Reddit News:** Instantly get the hottest posts from your favorite subreddits.
+- **Customizable Sources:** Ask for news from any subreddit – tech, science, worldnews, memes, you name it!
+- **Summarized Headlines:** The sagent delivers concise, easy-to-read summaries (no clickbait, just the good stuff).
+- **Conversational & Friendly:** Always responds in clear, concise English with a dash of personality.
+- **No Reddit Account Needed:** Just run and chat – no login or API keys required for basic usage.
+
+---
+
+## 🛠️ How It Works
+
+- **Agent Core:** The magic lives in `agent.py`, where the agent interprets your requests and fetches Reddit content.
+- **Prompt Engineering:** `prompts.py` contains the system instructions and prompt templates that keep the agent on track and in character.
+- **Plug-and-Play:** Just run the agent and start chatting – it handles the rest!
+
+---
+
+## 📂 Folder Structure
+
+```
 reddit_news_agent/
-├── init.py # Package initializer
-├── agent.py # Main agent logic and Reddit tool
-├── prompts.py # System prompt/instructions for the agent
+├── __init__.py
+├── agent.py      # The main agent logic
+├── prompts.py    # System prompts and instructions
+├── README.md     # (You are here!)
+└── __pycache__/  # Compiled Python files
+```
 
 ---
-## Requirements
-- At least Python 3.10+
-- **pip** as dependency manager
 
----
-## Setup
+## ⚡ Quickstart
 
-1. **Clone the repository** and navigate to the project folder.
-
-2. **Install dependencies** (in your virtual environment):
+1. **Install dependencies**  
+   Make sure you have Python 3.10+ and run:
    ```bash
-   pip install -r requirements.txt
+   pip install -r ../requirements.txt
+   ```
 
-3. **Configure your** .env **file** in the project root with the following variables:
-OPENROUTER_API_KEY=your_openrouter_api_key
-REDDIT_CLIENT_ID=your_reddit_client_id
-REDDIT_CLIENT_SECRET=your_reddit_client_secret
-REDDIT_USER_AGENT=your_app_name/0.1 by your_reddit_username
-GOOGLE_API_KEY=your_google_api_key
+2. **Run the agent!**
+   ```bash
+   python agent.py
+   ```
 
-## Usage
-1. Enter your terminal and run the agent via the command:
+3. **Start chatting!**  
+   - Get top news: `What's trending on r/worldnews?`
+   - Ask for tech: `Show me the latest from r/technology`
+   - Explore fun: `What's hot on r/funny today?`
+   - Get summaries: `Summarize the top posts from r/science`
+
+---
+
+## 🧠 How the Agent Thinks
+
+- **Always English:** No non-English words, ever!
+- **Summarizes, Not Spams:** Gives you the highlights, not a wall of text.
+- **Subreddit Smart:** Knows how to fetch and filter posts from any subreddit you mention.
+- **Polite & Fun:** Keeps things light, friendly, and never boring.
+
+---
+
+## 📝 Customization
+
+Want to change how the agent summarizes or which subreddits it prefers?  
+Edit [`prompts.py`](prompts.py) for personality tweaks, or dive into [`agent.py`](agent.py) to adjust fetching and formatting logic.
+
+---
+
+## 💡 Example Session
+
 ```
-    adk web
+You: What's trending on r/news?
+Agent: Here are the top 3 posts from r/news:
+1. "Major breakthrough in renewable energy" (2.1k upvotes)
+2. "Global leaders meet for climate summit" (1.8k upvotes)
+3. "New tech aims to clean oceans" (1.5k upvotes)
+
+You: Show me something fun from r/aww!
+Agent: Top post from r/aww: "Puppy learns to climb stairs for the first time" (3.2k upvotes)
 ```
-2. Select the reddit_news_agent from the agent menu and start chatting with it.
+
+---
+
+## 🦸‍♂️ Credits
+
+Built with Python, Reddit’s open API, and a love for internet news.
+
+---
+
+Stay curious, stay
