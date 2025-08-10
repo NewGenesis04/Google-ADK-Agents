@@ -44,11 +44,19 @@ reddit_news_agent/
    ```
 
 2. **Run the agent!**
+   - Navigate to the root folder on your terminal and run one of the following commands:
+   ---
+   Run in CLI
    ```bash
-   python agent.py
+   adk run reddit_news_agent
+   ```
+   ---
+   Run on web:
+   ```bash
+   adk web
    ```
 
-3. **Start chatting!**  
+4. **Start chatting!**  
    - Get top news: `What's trending on r/worldnews?`
    - Ask for tech: `Show me the latest from r/technology`
    - Explore fun: `What's hot on r/funny today?`
