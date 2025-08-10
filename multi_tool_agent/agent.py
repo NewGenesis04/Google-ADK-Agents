@@ -114,5 +114,5 @@ def call_agent(query):
         if event.is_final_response():
             final_response = event.content.parts[0].text
             print("Agent Response: ", final_response)
-
+    
 call_agent("What is the weather in Lagos?")
