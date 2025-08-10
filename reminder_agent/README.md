@@ -110,6 +110,6 @@ Agent: Deleted reminder 1: 'water the plants'
 
 ## 🦸‍♂️ Credits
 
-Built with [Google ADK](https://github.com/google/adk), a dash of Python, and a sprinkle of fun.
+Built with [Google ADK](https://github.com/google/adk-python), a dash of Python, and a sprinkle of fun.
 
 ---
