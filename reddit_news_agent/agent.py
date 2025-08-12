@@ -9,21 +9,20 @@ load_dotenv(dotenv_path=Path('.') / '.env')
 from .prompts import SYSTEM_INSTRUCTION
 api_key = os.getenv("OPENROUTER_API_KEY")
 
+import os
+import praw
+import prawcore
+
 def get_reddit_ai_news(subreddit: str, limit: int = 5) -> dict[str, list[str]]:
     """
     Fetches top post titles from a specified subreddit using the Reddit API.
-
-    Args:
-        subreddit: The name of the subreddit to fetch news from (e.g., 'AINewsAndTrends').
-        limit: The maximum number of top posts to fetch.
-
-    Returns:
-        A dictionary with the subreddit name as key and a list of
-        post titles as value. Returns an error message if credentials are
-        missing, the subreddit is invalid, or an API error occurs.
     """
-
     print(f"--- Tool called: Fetching from r/{subreddit} via Reddit API ---")
+    
+    # Validate limit
+    if not isinstance(limit, int) or limit <= 0:
+        return {subreddit: ["Error: 'limit' must be a positive integer."]}
+    
     client_id = os.getenv("REDDIT_CLIENT_ID")
     client_secret = os.getenv("REDDIT_CLIENT_SECRET")
     user_agent = os.getenv("REDDIT_USER_AGENT")
@@ -38,19 +37,31 @@ def get_reddit_ai_news(subreddit: str, limit: int = 5) -> dict[str, list[str]]:
             client_secret=client_secret,
             user_agent=user_agent
         )
-        # Check if the subreddit exists
-        reddit.subreddits.search_by_name(subreddit, exact=True)
+
+        # Try to access subreddit
         sub = reddit.subreddit(subreddit)
-        top_posts = list(sub.hot(limit=limit)) # Fetch hot posts
+        print(f"Fetching hot posts from r/{subreddit} with limit={limit}...")
+        top_posts = list(sub.hot(limit=limit))
+        
         titles = [post.title for post in top_posts]
         if not titles:
-             return {subreddit: [f"No recent hot posts found in r/{subreddit}."]}
-        
+            return {subreddit: [f"No recent hot posts found in r/{subreddit}."]}
+
         return {subreddit: titles}
     
+    except prawcore.exceptions.NotFound:
+        return {subreddit: [f"Subreddit 'r/{subreddit}' not found."]}
+    
+    except prawcore.exceptions.BadRequest as e:
+        return {subreddit: [f"Bad request when fetching from r/{subreddit}: {str(e)}. "
+                            "Check subreddit name, limit, or API parameters."]}
+    
     except praw.exceptions.PRAWException as e:
-        print(f"--- Tool error: {e} ---")
-        return {subreddit: [f"Error fetching from r/{subreddit}: {str(e)}"]}
+        return {subreddit: [f"PRAW error fetching from r/{subreddit}: {str(e)}"]}
+    
+    except Exception as e:
+        return {subreddit: [f"Unexpected error fetching from r/{subreddit}: {str(e)}"]}
+
 
 
 
