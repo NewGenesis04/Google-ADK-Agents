@@ -3,7 +3,7 @@ from google.adk.runners import Runner
 import asyncio
 from dotenv import load_dotenv
 from google.genai import types
-from agent import reminder_agent
+from agent import root_agent
 
 
 load_dotenv()
@@ -159,7 +159,7 @@ async def call_agent_async(runner, user_id, session_id, query):
     except Exception as e:
         print(f"Error during agent call: {e}")
 
-    # # Display state after processing the message
+    # Display state after processing the message
     # await display_state(
     #     runner.session_service,
     #     runner.app_name,
@@ -200,7 +200,7 @@ async def main_async():
     # ===== PART 4: Agent Runner Setup =====
     # Create a runner with the memory agent
     runner = Runner(
-        agent=reminder_agent,
+        agent=root_agent,
         app_name=APP_NAME,
         session_service=session_service,
     )
@@ -225,3 +225,7 @@ async def main_async():
 
 if __name__ == "__main__":
     asyncio.run(main_async())
+
+
+
+#TODO: display_state function is doing some weird things. It's not updating the state of the reminders correctly.

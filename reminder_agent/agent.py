@@ -10,7 +10,7 @@ load_dotenv(dotenv_path=Path('.') / '.env')
 api_key = os.getenv("OPENROUTER_API_KEY")
 
 model = LiteLlm(
-     model="openrouter/deepseek/deepseek-chat-v3-0324:free",
+     model="openrouter/moonshotai/kimi-k2:free",
      api_key=api_key
 )
 
